@@ -152,17 +152,30 @@ productsWithMap.forEach((value, key, map) => {
 
 // mengelompokkan produk berdasarkan kategori
 const basedOnKategori = new Map();
-const allKategori = ["elektronik", "aksesoris", "audio", "penyimpanan"];
+// const allKategori = ["elektronik", "aksesoris", "audio", "penyimpanan"];
 
-for (let index = 0; index < allKategori.length; index++) {
-  let kategori = [];
-  productsWithMap.forEach((value, key, map) => {
-    const regexp = new RegExp(allKategori[index], "i");
-    if (value.kategori.search(regexp) !== -1) {
-      kategori.push(value);
+// for (let index = 0; index < allKategori.length; index++) {
+//   let kategori = [];
+//   productsWithMap.forEach((value, key, map) => {
+//     const regexp = new RegExp(allKategori[index], "i");
+//     if (value.kategori.search(regexp) !== -1) {
+//       kategori.push(value);
+//     }
+//   });
+
+//   basedOnKategori.set(allKategori[index], kategori);
+// }
+// console.log(basedOnKategori);
+
+function grupByCategory() {
+  for ([key, element] of productsWithMap.entries()) {
+    if (!basedOnKategori.has(element.kategori)) {
+      basedOnKategori
+        .set(element.kategori, [])
+        .get(element.kategori)
+        .push(element);
+    } else {
+      basedOnKategori.get(element.kategori).push(element);
     }
-  });
-
-  basedOnKategori.set(allKategori[index], kategori);
+  }
 }
-console.log(basedOnKategori);
