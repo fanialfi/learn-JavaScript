@@ -162,3 +162,15 @@ productsWithMap.set("SKU-HP-MEIZU", {
 });
 
 console.log(productsWithMap.get("SKU-HP-MEIZU"));
+
+// Map.keys() method // mengembalikan map iterator yang berisi key dari setiap element didalam map
+const map = new Map([
+  ["0", "Foo"],
+  ["1", "bar"],
+]);
+
+const iteratorKeys = map.keys();
+console.log(iteratorKeys.next());
+
+const iteratorEntries = map.entries(); // sedangkan method entries() mengembalikan map iterator yang berisi [key, value]
+console.log(iteratorEntries.next());
